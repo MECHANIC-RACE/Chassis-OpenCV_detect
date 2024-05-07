@@ -27,7 +27,7 @@ void Chassis_Servo_Init()
  */
 void Chassis_Servo_Task(void const *argument)
 {
-    // 延时1秒，等待系统稳定（？）
+    // 延时1秒，等待系统稳定
     osDelay(1000);
     for (;;) {
         xSemaphoreTakeRecursive(ChassisControl.xMutex_control, portMAX_DELAY);
@@ -37,6 +37,9 @@ void Chassis_Servo_Task(void const *argument)
 
         // 通过码盘反馈的当前位置与上位机传来的期望位置PID计算得到期望vx、vy，储存到ChassisControl_tmp中
         OPS_Servo(&(ChassisControl_tmp), &(OPS_Data));
+
+        // //测试
+        // OPS_Servo(&(ChassisControl), &(OPS_Data));
 
         // 创建一个数组存储四个电机的速度
         double motor_velocity[4] = {0};
@@ -106,9 +109,9 @@ void Chassis_Servo_DjiMotorInit()
     DJI_Init();
     for (uint16_t i = 0; i < 4; i++)
     {
-        hDJI[i].speedPID.KP        = 6;//5
-        hDJI[i].speedPID.KI        = 0.2;//0.2
-        hDJI[i].speedPID.KD        = 0.8;//0.8
+        hDJI[i].speedPID.KP        = 2;//5
+        hDJI[i].speedPID.KI        = 0.3;//0.2
+        hDJI[i].speedPID.KD        = 0.6;//0.8
         hDJI[i].speedPID.outputMax = 8000;
 
     }
