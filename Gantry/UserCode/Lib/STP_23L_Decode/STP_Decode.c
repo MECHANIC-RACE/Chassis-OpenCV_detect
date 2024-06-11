@@ -2,7 +2,7 @@
  * @Author: X311
  * @Date: 2024-05-13 09:00:14
  * @LastEditors: X311 
- * @LastEditTime: 2024-05-18 00:06:22
+ * @LastEditTime: 2024-05-24 18:52:17
  * @FilePath: \Gantry\UserCode\Lib\STP_23L_Decode\STP_Decode.c
  * @Brief: 
  * 
@@ -65,6 +65,7 @@ void Upper_Decode_TaskStart(void)
  */
 void Upper_Decode_Task(void)
 {
+    osDelay(100);
     for (;;) {
         for(int i=0;i<3;i++){
             if(flag[i]){
@@ -72,6 +73,10 @@ void Upper_Decode_Task(void)
                 flag[i] = 0;
             }
         }
-        osDelay(2);
+
+        // if ((distance_aver[0] == 0) || (distance_aver[1] == 0) || (distance_aver[2] == 0)) {
+        //     Upper_Decode_TaskStart();
+        // }
+        osDelay(3);
     }
 }

@@ -7,7 +7,8 @@
     "Core",
     "Drivers",
     "Middlewares",
-    "UserCode"
+    "UserCode",
+    "build"
   ],
   "virtualFolder": {
     "name": "<virtual_root>",
@@ -43,7 +44,7 @@
       "uploadConfig": {
         "bin": "",
         "target": "stm32f4x",
-        "interface": "cmsis-dap",
+        "interface": "cmsis-dap-v1",
         "baseAddr": "0x08000000"
       },
       "uploadConfigMap": {
@@ -68,6 +69,12 @@
           "elFile": "None",
           "optionBytes": ".eide/debug.st.option.bytes.ini",
           "otherCmds": ""
+        },
+        "OpenOCD": {
+          "bin": "",
+          "target": "stm32f4x",
+          "interface": "cmsis-dap",
+          "baseAddr": "0x08000000"
         }
       },
       "custom_dep": {
