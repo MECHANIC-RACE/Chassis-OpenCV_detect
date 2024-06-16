@@ -44,7 +44,7 @@
       "uploadConfig": {
         "bin": "",
         "target": "stm32f4x",
-        "interface": "cmsis-dap-v1",
+        "interface": "cmsis-dap",
         "baseAddr": "0x08000000"
       },
       "uploadConfigMap": {
@@ -73,7 +73,7 @@
         "OpenOCD": {
           "bin": "",
           "target": "stm32f4x",
-          "interface": "cmsis-dap",
+          "interface": "cmsis-dap-v1",
           "baseAddr": "0x08000000"
         }
       },

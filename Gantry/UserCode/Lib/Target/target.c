@@ -1,9 +1,9 @@
 /*
  * @Author: X311
  * @Date: 2024-05-14 00:50:30
- * @LastEditors: X311 
- * @LastEditTime: 2024-05-26 22:25:32
- * @FilePath: \Gantry_board_02\UserCode\Lib\Target\target.c
+ * @LastEditors: doge60 3020118317@qq.com
+ * @LastEditTime: 2024-06-16 23:51:44
+ * @FilePath: \Gantry\UserCode\Lib\Target\target.c
  * @Brief: 
  * 
  * Copyright (c) 2024 by X311, All Rights Reserved. 
@@ -69,6 +69,7 @@ void Target_Decode_TaskStart(void)
  */
 void Target_Decode_Task(void)
 {
+    osDelay(100);
     float weight_placement_tmp[5] = {0};
     int switch_flag = 0;         // 判断每次接收到的数组与基准数组是否相等
     int tar_count = 0;           // 计数连续相同数组的次数
@@ -118,8 +119,8 @@ void Target_Decode_Task(void)
                     }
                 }
 
-                // 如果连续(十次)接收到同样的数组，则把这个数组设置为最终值
-                if (tar_count >= 10) {
+                // 如果连续(20次)接收到同样的数组，则把这个数组设置为最终值
+                if (tar_count >= 20) {
                     Uart_State = 2;
                     vTaskSuspend(xHandle);
                 }
